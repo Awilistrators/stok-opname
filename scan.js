@@ -2,6 +2,7 @@ const API_URL = "https://script.google.com/macros/s/AKfycbxWygSWb3Xdafmp3L_1_b3B
 
 let masterProduk = {};
 let masterReady = false; // ⬅️ TAMBAH
+let qrScanner = null;
 
 const petugas = localStorage.getItem("petugas");
 const mode = localStorage.getItem("modeScan");
@@ -137,3 +138,30 @@ function ganti(){
   localStorage.clear();
   location.href = "index.html";
 }
+
+function bukaKamera(){
+  const kameraDiv = document.getElementById("kamera");
+
+  kameraDiv.style.display = "block";
+
+  if(qrScanner) return;
+
+  qrScanner = new Html5Qrcode("kamera");
+
+  qrScanner.start(
+    { facingMode: "environment" },
+    { fps: 10, qrbox: 250 },
+    (decodedText) => {
+      barcode.value = decodedText;
+      qrScanner.stop();
+      qrScanner = null;
+      kameraDiv.style.display = "none";
+      cariProduk();
+    },
+    () => {}
+  ).catch(err => {
+    status.innerText = "❌ Kamera tidak bisa diakses";
+  });
+}
+
+qty.focus();
