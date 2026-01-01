@@ -98,8 +98,3 @@ button.secondary {
   font-size: 26px;
   margin: 0 auto 24px auto; /* ⬅️ CENTER + JARAK */
 }
-
-.app {
-  align-items: stretch; /* default, biar child full width */
-}
-
