@@ -28,18 +28,36 @@
 
   </div>
 
-  <script>
-    function mulai(){
-      const p = document.getElementById("petugas").value.trim();
-      if(!p){
-        alert("Nama petugas wajib diisi");
-        return;
-      }
+  <!-- POPUP CUSTOM -->
+<div id="popup" class="popup hidden">
+  <div class="popup-box">
+    <p id="popup-text">Isi nama petugas dulu</p>
+    <button onclick="tutupPopup()">OK</button>
+  </div>
+</div>
 
-      localStorage.setItem("petugas", p);
-      location.href = "scan.html";
+  <script>
+  function mulai(){
+    const p = document.getElementById("petugas").value.trim();
+    if(!p){
+      tampilkanPopup("Isi nama petugas dulu");
+      return;
     }
-  </script>
+
+    localStorage.setItem("petugas", p);
+    location.href = "scan.html";
+  }
+
+  function tampilkanPopup(teks){
+    document.getElementById("popup-text").innerText = teks;
+    document.getElementById("popup").classList.remove("hidden");
+  }
+
+  function tutupPopup(){
+    document.getElementById("popup").classList.add("hidden");
+  }
+</script>
+
 
 </body>
 
