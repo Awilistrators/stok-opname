@@ -13,6 +13,7 @@ document.getElementById("info").innerText =
 const barcode = document.getElementById("barcode");
 const qty = document.getElementById("qty");
 const nama = document.getElementById("nama");
+const status = document.getElementById("status");
 
 // SCAN DENGAN SCANNER USB (ENTER)
 barcode.addEventListener("keydown", e => {
@@ -23,21 +24,36 @@ barcode.addEventListener("keydown", e => {
 });
 
 function cariProduk(){
-  if(!barcode.value) return;
+  const code = barcode.value.trim();
+  if(!code) return;
+
+  status.innerText = "🔍 Mencari produk...";
+  nama.innerText = "";
 
   fetch(API_URL,{
     method:"POST",
     body: JSON.stringify({
       action:"getProduk",
-      barcode: barcode.value.trim()
+      barcode: code
     })
   })
   .then(r=>r.json())
   .then(d=>{
+    if(d.status !== "ok"){
+      status.innerText = "⚠️ Produk tidak ditemukan";
+      barcode.focus();
+      return;
+    }
+
     nama.innerText = d.nama;
+    status.innerText = "";
     qty.focus();
+  })
+  .catch(()=>{
+    status.innerText = "❌ Gagal koneksi";
   });
 }
+
 
 function simpan(){
   if(!qty.value){ alert("Qty wajib diisi"); return; }
