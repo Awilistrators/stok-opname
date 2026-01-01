@@ -19,7 +19,7 @@ const nama = document.getElementById("nama");
 const status = document.getElementById("status");
 const info = document.getElementById("info");
 
-info.innerText = "Petugas: " + petugas + " | Mode: " + mode;
+info.innerText = "Petugas: " + petugas;
 
 /* ============================= */
 /* LOAD MASTER PRODUK (SEKALI)   */
