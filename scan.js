@@ -1,4 +1,4 @@
-const API_URL = "https://script.google.com/macros/s/AKfycbwkmXgryVVSfP7EuLRlQ7c00SJ0Pb-yXic4lJPVNP20UzBFCBY2F7oSmkE5vO75Ioay/exec";
+const API_URL = "https://script.google.com/macros/s/AKfycbxWygSWb3Xdafmp3L_1_b3BBx-2Vqnp3-pS5NT4JJPO2k0XJmMflIrrOFKQJU00Bvrp/exec";
 
 let masterProduk = {};   // ⬅️ cache MASTER_PRODUK
 const petugas = localStorage.getItem("petugas");
