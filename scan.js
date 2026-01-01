@@ -1,4 +1,4 @@
-const API_URL = "https://script.google.com/macros/s/AKfycbzeBUx9hPrxB5paVrZppnxwFx3_w0vl_-US7MBPZPbZq07NT_F7di6WHV9ss-hqi10G/exec";
+const API_URL = "https://script.google.com/macros/s/AKfycbwkmXgryVVSfP7EuLRlQ7c00SJ0Pb-yXic4lJPVNP20UzBFCBY2F7oSmkE5vO75Ioay/exec";
 
 const petugas = localStorage.getItem("petugas");
 const mode = localStorage.getItem("modeScan");
