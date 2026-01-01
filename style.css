@@ -91,10 +91,15 @@ button.secondary {
   }
 }
 
-/* Judul halaman index */
+/* Judul halaman index (PC + HP) */
 .title {
-  text-align: center;
+  width: 100%;              /* ⬅️ PENTING */
+  text-align: center;       /* ⬅️ PAKSA TENGAH */
   font-size: 26px;
-  margin-bottom: 24px;
+  margin: 0 auto 24px auto; /* ⬅️ CENTER + JARAK */
+}
+
+.app {
+  align-items: stretch; /* default, biar child full width */
 }
 
