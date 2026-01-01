@@ -48,12 +48,23 @@ function loadMasterProduk(){
 /* ============================= */
 /* SCAN BARCODE                  */
 /* ============================= */
+let scanTimer = null;
+
 barcode.addEventListener("keydown", e => {
-  if(e.key === "Enter"){
+  if (e.key === "Enter" || e.key === "Tab") {
     e.preventDefault();
     cariProduk();
   }
 });
+
+// Untuk HP & input manual
+barcode.addEventListener("input", () => {
+  clearTimeout(scanTimer);
+  scanTimer = setTimeout(() => {
+    cariProduk();
+  }, 300); // tunggu user selesai input
+});
+
 
 function cariProduk(){
   const code = barcode.value.trim();
