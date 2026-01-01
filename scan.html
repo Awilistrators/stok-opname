@@ -12,6 +12,7 @@
   <meta name="theme-color" content="#2f80ed">
 
   <link rel="stylesheet" href="style.css">
+  <script src="https://unpkg.com/html5-qrcode"></script>
 </head>
 
 <body>
@@ -20,7 +21,12 @@
 
     <div id="info"></div>
 
-    <input id="barcode" placeholder="Scan Barcode" autofocus>
+    <button onclick="bukaKamera()" class="secondary">📷 Scan dengan Kamera</button>
+
+<div id="kamera" style="display:none; margin-top:12px;"></div>
+
+<input id="barcode" placeholder="Scan Barcode" autofocus>
+
 
     <div id="nama"></div>
     <div id="status"></div>
@@ -33,6 +39,7 @@
   </div>
 
   <script src="scan.js"></script>
+  
 </body>
 
 </html>
