@@ -49,13 +49,14 @@ input {
 /* NAMA PRODUK                   */
 /* ============================= */
 #nama {
-  width: 100%;              /* penting biar bisa center */
-  text-align: center;       /* ⬅️ nama produk di tengah */
-  font-size: 20px;
+  width: 100%;
+  text-align: center;
+  font-size: 22px;
   font-weight: bold;
-  color: #222;
-  min-height: 28px;
+  color: #2f80ed;
+  min-height: 32px;
 }
+
 
 
 /* ============================= */
