@@ -98,7 +98,7 @@ function cariProduk(){
 
   if(produk){
     nama.innerText = produk.nama;
-    qohEl.innerText = "Stok tersedia: " + produk.qoh;
+    qohEl.innerText = "Stok sistem : " + produk.qoh;
     status.innerText = "✔ Produk ditemukan";
     // ⛔ tidak auto pindah ke qty
   } else {
