@@ -100,8 +100,15 @@ function cariProduk(){
   nama.innerText = produk.nama;
   qohEl.innerText = "Stok sistem : " + produk.qoh;
   status.innerText = "✔ Produk ditemukan";
-  bunyiBeep(); // 🔊 beep sukses
-} else {
+  bunyiBeep();
+
+  // ⬇️ AUTO FOCUS KE QTY (UNTUK SEMUA MODE)
+  qty.value = "";
+  setTimeout(() => {
+    qty.focus();
+  }, 100);
+}
+ else {
     nama.innerText = "";
     qohEl.innerText = "";
     status.innerText = "⚠️ Produk tidak ditemukan";
@@ -192,11 +199,6 @@ function bukaKamera(){
   qrScanner = null;
   kameraDiv.style.display = "none";
   cariProduk();
-
-  // ⬇️ AUTO FOCUS KE QTY
-  setTimeout(() => {
-    qty.focus();
-  }, 100);
 }
 ,
     () => {}
