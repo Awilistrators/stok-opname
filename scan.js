@@ -175,34 +175,29 @@ function bukaKamera(){
   qrScanner = new Html5Qrcode("kamera");
 
   qrScanner.start(
-  { facingMode: "environment" },
-  {
-    fps: 10,
-    // ⛔ qrbox DIHAPUS → kamera full layar
-    formatsToSupport: [
-      Html5QrcodeSupportedFormats.CODE_128,
-      Html5QrcodeSupportedFormats.EAN_13,
-      Html5QrcodeSupportedFormats.EAN_8,
-      Html5QrcodeSupportedFormats.UPC_A,
-      Html5QrcodeSupportedFormats.UPC_E
-    ]
-  },
-  (decodedText) => {
-    barcode.value = decodedText;
-    bunyiBeep(); // 🔊 beep sukses
-    qrScanner.stop();
-    qrScanner = null;
-    kameraDiv.style.display = "none";
-    cariProduk();
-  },
-  () => {}
-);
+    { facingMode: "environment" },
+    {
+      fps: 10,
+      formatsToSupport: [
+        Html5QrcodeSupportedFormats.CODE_128,
+        Html5QrcodeSupportedFormats.EAN_13,
+        Html5QrcodeSupportedFormats.EAN_8,
+        Html5QrcodeSupportedFormats.UPC_A,
+        Html5QrcodeSupportedFormats.UPC_E
+      ]
+    },
+    (decodedText) => {
+      barcode.value = decodedText;
+      bunyiBeep();
+      qrScanner.stop();
+      qrScanner = null;
+      kameraDiv.style.display = "none";
+      cariProduk();
+    },
+    () => {}
+  );
+}
 
-}
-,
-  () => {}
-);
-}
 
 function bunyiBeep(){
   try {
@@ -225,4 +220,22 @@ function bunyiBeep(){
   }
 }
 
-qty.focus();
+function tampilkanPopup(teks){
+  const popup = document.getElementById("popup");
+  const popupText = document.getElementById("popup-text");
+
+  if(!popup || !popupText){
+    console.error("Popup tidak ditemukan");
+    return;
+  }
+
+  popupText.innerText = teks;
+  popup.classList.remove("hidden");
+}
+
+function tutupPopup(){
+  const popup = document.getElementById("popup");
+  if(popup){
+    popup.classList.add("hidden");
+  }
+}
