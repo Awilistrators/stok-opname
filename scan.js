@@ -1,4 +1,4 @@
-const API_URL = "https://script.google.com/macros/s/AKfycbxcYu3mJ7ezxrZmzuAQcIEjflqXLGLZBDuH0Y2ifJ29rjp6zkpEAO1gZ84XPGPzhOHE/exec";
+const API_URL = "https://script.google.com/macros/s/AKfycbyBo6zgFV0ULvGk--Ornhf_fhITK8KUCUSsD_91oNM5kz4Bmc2b_ZnKlNtCx67tuV-A/exec";
 
 let masterProduk = {};
 let masterReady = false; // ⬅️ TAMBAH
