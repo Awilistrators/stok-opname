@@ -178,7 +178,7 @@ function bukaKamera(){
   { facingMode: "environment" },
   {
     fps: 10,
-    qrbox: { width: 300, height: 120 }, // ⬅️ bentuk horizontal (khusus 1D)
+    // ⛔ qrbox DIHAPUS → kamera full layar
     formatsToSupport: [
       Html5QrcodeSupportedFormats.CODE_128,
       Html5QrcodeSupportedFormats.EAN_13,
@@ -188,14 +188,16 @@ function bukaKamera(){
     ]
   },
   (decodedText) => {
-  barcode.value = decodedText;
+    barcode.value = decodedText;
+    bunyiBeep(); // 🔊 beep sukses
+    qrScanner.stop();
+    qrScanner = null;
+    kameraDiv.style.display = "none";
+    cariProduk();
+  },
+  () => {}
+);
 
-  bunyiBeep(); // 🔊 BEEP KHUSUS 1D BERHASIL
-
-  qrScanner.stop();
-  qrScanner = null;
-  kameraDiv.style.display = "none";
-  cariProduk();
 }
 ,
   () => {}
