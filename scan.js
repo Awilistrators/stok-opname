@@ -154,6 +154,7 @@ function simpan(){
   qohEl.innerText = "";
   status.innerText = "💾 Tersimpan";
   resumeKamera();
+  scrollKeKamera();
 
 
   setTimeout(() => {
@@ -294,6 +295,16 @@ function resumeKamera(){
   kameraAktif = true;
   lastScan = "";        // ⬅️ RESET BARCODE TERAKHIR
   lastScanTime = 0;
+}
+
+function scrollKeKamera(){
+  const kameraDiv = document.getElementById("kamera");
+  if(kameraDiv){
+    kameraDiv.scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    });
+  }
 }
 
 
