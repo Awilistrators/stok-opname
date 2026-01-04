@@ -97,11 +97,11 @@ function cariProduk(){
   const produk = masterProduk[code];
 
   if(produk){
-    nama.innerText = produk.nama;
-    qohEl.innerText = "Stok sistem : " + produk.qoh;
-    status.innerText = "✔ Produk ditemukan";
-    // ⛔ tidak auto pindah ke qty
-  } else {
+  nama.innerText = produk.nama;
+  qohEl.innerText = "Stok sistem : " + produk.qoh;
+  status.innerText = "✔ Produk ditemukan";
+  bunyiBeep(); // 🔊 beep sukses
+} else {
     nama.innerText = "";
     qohEl.innerText = "";
     status.innerText = "⚠️ Produk tidak ditemukan";
@@ -188,15 +188,39 @@ function bukaKamera(){
     ]
   },
   (decodedText) => {
-    barcode.value = decodedText;
-    qrScanner.stop();
-    qrScanner = null;
-    kameraDiv.style.display = "none";
-    cariProduk();
-  },
+  barcode.value = decodedText;
+
+  bunyiBeep(); // 🔊 BEEP KHUSUS 1D BERHASIL
+
+  qrScanner.stop();
+  qrScanner = null;
+  kameraDiv.style.display = "none";
+  cariProduk();
+}
+,
   () => {}
 );
+}
 
+function bunyiBeep(){
+  try {
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+
+    osc.type = "sine";        // suara halus
+    osc.frequency.value = 880; // nada beep (Hz)
+
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+
+    gain.gain.value = 0.15;   // volume (0.1–0.2 ideal)
+
+    osc.start();
+    osc.stop(ctx.currentTime + 0.12); // durasi beep (detik)
+  } catch(e) {
+    console.log("Audio tidak diizinkan");
+  }
 }
 
 qty.focus();
