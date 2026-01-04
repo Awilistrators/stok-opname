@@ -113,21 +113,29 @@ function cariProduk(){
 /* SIMPAN OPNAME                 */
 /* ============================= */
 function simpan(){
+
+  // ❌ CEK BARCODE / KODE ITEM
+  if(!barcode.value.trim()){
+    tampilkanPopup("Scan / isi kode item dulu");
+    return;
+  }
+
+  // ❌ CEK QTY
   if(!qty.value){
     tampilkanPopup("Qty wajib diisi");
     return;
   }
 
-  // SIMPAN DATA KE VARIABEL DULU
+  // SIMPAN DATA KE VARIABEL
   const payload = {
     action: "simpanOpname",
-    kode_input: barcode.value,   // kode item / barcode
+    kode_input: barcode.value,
     nama: nama.innerText,
     qty: qty.value,
     petugas: petugas
   };
 
-  // RESET UI LANGSUNG (BIAR INSTAN)
+  // RESET UI LANGSUNG (INSTAN)
   barcode.value = "";
   qty.value = "";
   nama.innerText = "";
@@ -147,6 +155,7 @@ function simpan(){
     console.error("Gagal simpan opname");
   });
 }
+
 
 /* ============================= */
 /* GANTI PETUGAS                 */
