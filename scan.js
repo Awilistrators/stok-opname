@@ -184,13 +184,14 @@ function bukaKamera() {
         Html5QrcodeSupportedFormats.UPC_E
       ]
     },
-  decodedText) => {
-  barcode.value = decodedText;
-  qrScanner.stop();
-  qrScanner = null;
-  kameraDiv.style.display = "none";
-  cariProduk(); // beep tetap jalan di sini
-}
+    (decodedText) => {
+      barcode.value = decodedText;
+      qrScanner.stop();
+      qrScanner = null;
+      kameraDiv.style.display = "none";
+      cariProduk(); // beep dipanggil di sini
+    },
+    () => {}
   );
 }
 
@@ -209,7 +210,13 @@ function tutupPopup() {
 /* ============================= */
 /* SUARA                         */
 /* ============================= */
+let lastBeep = 0;
+
 function bunyiBeep() {
+  const now = Date.now();
+  if (now - lastBeep < 200) return;
+  lastBeep = now;
+
   try {
     const ctx = new (window.AudioContext || window.webkitAudioContext)();
     const osc = ctx.createOscillator();
@@ -226,3 +233,4 @@ function bunyiBeep() {
     osc.stop(ctx.currentTime + 0.12);
   } catch (e) {}
 }
+
