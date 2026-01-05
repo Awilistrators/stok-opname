@@ -87,11 +87,16 @@ function cariProduk() {
   const produk = masterProduk[code];
 
   if (produk) {
-    nama.innerText = produk.nama;
-    qohEl.innerText = "Stok sistem : " + produk.qoh;
-    status.innerText = "✔ Produk ditemukan";
-    bunyiBeep();
-  } else {
+  nama.innerText = produk.nama;
+  qohEl.innerText = "Stok sistem : " + produk.qoh;
+  status.innerText = "✔ Produk ditemukan";
+  bunyiBeep();
+
+  // ⬇️ PINDAH CURSOR KE QTY
+  qty.focus();
+  qty.select(); // opsional: langsung blok isi lama
+}
+ else {
     nama.innerText = "";
     qohEl.innerText = "";
     status.innerText = "⚠️ Produk tidak ditemukan";
