@@ -116,10 +116,17 @@ function cariProduk() {
     qty.focus();
     qty.select();
   } else {
-    nama.innerText = "";
-    qohEl.innerText = "";
-    status.innerText = "⚠️ Produk tidak ditemukan";
-  }
+  nama.innerText = "";
+  qohEl.innerText = "";
+  status.innerText = "⚠️ Produk tidak ditemukan";
+
+  // ⏳ auto clear setelah 2 detik
+  setTimeout(() => {
+    barcode.value = "";
+    status.innerText = "";
+    barcode.focus();
+  }, 2000);
+}
 }
 
 
